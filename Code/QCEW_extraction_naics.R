@@ -18,7 +18,7 @@ for(j in 1:length(map_names)){ #
   for(i in 1:length(file_names)){
     index=index+1
     #file <- read_csv(paste(path,file.names[i],sep=""))#,header=TRUE, sep=";", stringsAsFactors=FALSE)
-    out_file[[index]] <-read_csv(paste(path,map_names[j],"/",file_names[i],sep=""))
+    out_file[[index]] <-read_csv(paste(path,map_names[j],"/",file_names[i],sep=""),
                                  col_types=cols(
                                    area_fips=col_character(),
                                    own_code=col_integer(),
@@ -32,31 +32,7 @@ for(j in 1:length(map_names)){ #
                                    own_title=col_character(),
                                    industry_title=col_character(),
                                    agglvl_title=col_character(),
-                                   size_title=col_character(),
-                                   qtrly_estabs_count=col_integer(),
-                                   month1_emplvl=col_integer(),
-                                   month2_emplvl=col_integer(),
-                                   month3_emplvl=col_integer(),
-                                   total_qtrly_wages=col_integer(),
-                                   taxable_qtrly_wages=col_integer(),
-                                   qtrly_contributions=col_integer(),
-                                   avg_wkly_wage=col_integer(),
-                                   oty_disclosure_code=col_integer(),
-                                   oty_qtrly_estabs_count_chg=col_integer(),
-                                   oty_qtrly_estabs_count_pct_chg=col_integer(),
-                                   oty_month1_emplvl_chg=col_integer(),
-                                   oty_month1_emplvl_pct=col_integer(),
-                                   oty_month2_emplvl_chg=col_integer(),
-                                   oty_month2_emplvl_pct=col_integer(),
-                                   oty_month3_emplvl_chg=col_integer(),
-                                   oty_month3_emplvl_pct=col_integer(),
-                                   oty_total_qtrly_wages_chg=col_integer(),
-                                   oty_total_qtrly_wages_pct=col_integer(),
-                                   oty_taxable_qtrly_wages_chg=col_integer(),
-                                   oty_qtrly_contributions_chg=col_integer(),
-                                   oty_qtrly_contributions_pct=col_integer(),
-                                   oty_avg_wkly_wage_chg=col_integer(),
-                                   oty_avg_wkly_wage_pct=col_integer()
+                                   size_title=col_character()
                                    )
                                  )%>%filter(disclosure_code!="N",own_title=="Private")%>%#agglvl_title=="State, 4-digit SIC -- by ownership sector",
       dplyr::select(area_fips,industry_code,size_code,year,qtr,area_title,industry_title,avg_wkly_wage,qtrly_estabs_count,total_qtrly_wages,
